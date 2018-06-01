@@ -193,9 +193,9 @@ public class MapsOverlayActivity extends FragmentActivity implements OnMapReadyC
     private Marker mBarberista;
     private Marker mShop;
 
-    private Marker mLastSelectedMarker;
 
-    private EditText txtText;
+
+
 
 
     private final Random mRandom = new Random();
@@ -380,6 +380,7 @@ public class MapsOverlayActivity extends FragmentActivity implements OnMapReadyC
         // attaching data adapter to spinner
         spinner2.setAdapter(dataAdapter2);
 
+        EditText txtText;
 
         txtText = (EditText) findViewById(R.id.txtText);
 
@@ -1274,6 +1275,8 @@ public class MapsOverlayActivity extends FragmentActivity implements OnMapReadyC
         // Markers have a z-index that is settable and gettable.
         Toast.makeText(this, marker.getTitle(),
                 Toast.LENGTH_SHORT).show();
+
+        Marker mLastSelectedMarker;
 
         mLastSelectedMarker = marker;
         // We return false to indicate that we have not consumed the event and that we wish

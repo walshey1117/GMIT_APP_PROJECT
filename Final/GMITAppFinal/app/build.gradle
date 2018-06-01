@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.indooratlas.android.sdk.examples"
-        minSdkVersion 14
+        minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -51,13 +51,14 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:multidex:1.0.1'
-    compile "com.indooratlas.android:indooratlas-android-sdk:2.4.1@aar"
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.google.android.gms:play-services:10.2.0'
-    compile 'com.google.maps.android:android-maps-utils:0.3.+'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.2.0'
-    compile 'com.pubnub:pubnub-android:3.7.5'
-    compile 'com.android.support:design:24.0.0'
+    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.indooratlas.android:indooratlas-android-sdk:2.7.1@aar'
+    implementation 'com.indooratlas.android:indooratlas-android-wayfinding:2.7.0@aar'
+    implementation 'com.android.support:appcompat-v7:24.0.0'
+    implementation 'com.google.android.gms:play-services:10.2.0'
+    implementation 'com.google.maps.android:android-maps-utils:0.3.+'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.2.0'
+    implementation 'com.pubnub:pubnub-android:3.7.5'
+    implementation 'com.android.support:design:24.0.0'
 }
