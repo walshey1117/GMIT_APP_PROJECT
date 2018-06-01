@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '27.0.3'
+
+    // note: use gradle.properties in project root level to set your api credentials
+    def apiKey = project.properties['indoorAtlasApiKey'] ?: "52d69dee-80fe-4543-b0ee-19c0b83c201f";
+    def apiSecret = project.properties['indoorAtlasApiSecret'] ?: "2/MOnfrXQp4fB7MStbli8dcMTLTw7OuBv6JLKEsOq9WbDoNFZmIqTy+qHzqtnDBipzYft/2X5e5p5IOLP2/XPvESr7bN/AwDrx4fCk3iIbUD/GUj5e0GD68zg866Gg==";
+    def pubNubPublishKey = project.properties['pubNubPublishKey'] ?: "not-set";
+    def pubNubSubscribeKey = project.properties['pubNubSubscribeKey'] ?: "not-set";
+
+
+    defaultConfig {
+        applicationId "com.indooratlas.android.sdk.examples"
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        // avoid getting errors from malformed string resources if secret contains '%' chars
+        resValue "string", "indooratlas_api_key", apiKey
+        resValue "string", "indooratlas_api_secret", apiSecret.replaceAll("%", "\\\\u0025")
+        resValue "string", "pubnub_publish_key", pubNubPublishKey
+        resValue "string", "pubnub_subscribe_key", pubNubSubscribeKey
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("debug.keystore")
+            storePassword "android"
+            keyAlias "sdk_debug"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+    compile "com.indooratlas.android:indooratlas-android-sdk:2.4.1@aar"
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.google.android.gms:play-services:10.2.0'
+    compile 'com.google.maps.android:android-maps-utils:0.3.+'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.2.0'
+    compile 'com.pubnub:pubnub-android:3.7.5'
+    compile 'com.android.support:design:24.0.0'
+}
